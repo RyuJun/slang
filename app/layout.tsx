@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import { Providers } from "./providers";
 
 import "./globals.css";
+import React from "react";
 
 const roboto = Roboto({ weight: ["500"], subsets: ["latin"] });
 
