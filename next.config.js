@@ -1,19 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
+  env: {
+    RIOT_API_KEY: "RGAPI-4b3d4787-b483-40be-a4c7-52e2fe280f80",
+  },
   async rewrites() {
     return [
       {
-        source: "/lol/:path*",
-        destination: "https://kr.api.riotgames.com/lol/:path*",
+        source: "/riot/:path*",
+        destination: "https://asia.api.riotgames.com/riot/:path*",
       },
-      // {
-      //   source: "/asia/lol/:path*",
-      //   destination: "https://asia.api.riotgames.com/lol/:path*",
-      // },
-      // {
-      //   source: "/cdn/12.20.1/:path*",
-      //   destination: "http://ddragon.leagueoflegends.com/:path*",
-      // },
     ];
   },
 };

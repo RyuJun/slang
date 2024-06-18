@@ -1,5 +1,6 @@
 import React from "react";
-export const CloseFilledIcon = (props: any) => (
+import { IconSvgProps } from "@/_utils/common.types";
+export const CloseFilledIcon = (props: IconSvgProps) => (
   <svg
     aria-hidden="true"
     focusable="false"

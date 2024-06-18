@@ -1,14 +1,19 @@
 "use client";
 
+import React from "react";
 import { NextUIProvider } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import React from "react";
+import { queryClient } from "@/_config/query-client";
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export interface ProvidersProps {
+  children: React.ReactNode;
+}
+
+export function Providers({ children }: ProvidersProps) {
   const router = useRouter();
-  const queryClient = new QueryClient();
+
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={true} />
