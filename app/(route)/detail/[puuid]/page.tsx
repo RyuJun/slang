@@ -1,13 +1,28 @@
-import UserInfo from '@/_components/UserInfo/UserInfo';
-import queryOptions from '@/_service/summoner/queries';
-import { RequestOptions } from 'https';
-import React, { Suspense, useEffect } from 'react';
-import { Hydrate, getDehydratedQuery } from '@/_utils/react-query';
-import { User } from '@nextui-org/react';
-import AvartaServer from '../_components/server/AvartaServer';
+import queryOptions from '@/_service/match/queries';
+import React from 'react';
+import { Hydrate, getDehydratedQueries, getDehydratedQuery } from '@/_utils/react-query';
+import { NextConfig } from 'next';
+import NavBar from '@/_components/NavBar/NavBar';
+import MatchLists from '../_components/server/MatchLists';
 
-export default function Page() {
-  return <AvartaServer />;
+export default async function Page({ params }: NextConfig) {
+  const { puuid } = params;
+  // const { queryKey: matchIdsQueryKey, queryFn: matchIdsQueryFn } = queryOptions['match-ids']({ puuid });
+  // const dehydratedMatchIds = await getDehydratedQuery({ queryKey: matchIdsQueryKey, queryFn: matchIdsQueryFn });
+
+  // const matchIds = await matchIdsQueryFn();
+  // const matches = matchIds.map((matchId) => {
+  //   return queryOptions.match({ matchId });
+  // });
+
+  // const dehydreatedMatches = await getDehydratedQueries(matches);
+
+  return (
+    <div className="flex flex-col justify-center items-center">
+      <NavBar />
+      <MatchLists puuid={puuid} />
+    </div>
+  );
 }
 
 /*  <div className="p-8 flex">
