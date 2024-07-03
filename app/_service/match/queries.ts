@@ -11,7 +11,9 @@ const queryOptions = {
   'match-ids': ({ puuid }: IGET_MATCH_IDS_BY_PUUID_INPUT) => {
     return {
       queryKey: queryKeys['match-ids'](puuid),
-      queryFn: () => ServiceLoL.getMatchIdsByPuuid({ puuid }),
+      queryFn: () => {
+        return ServiceLoL.getMatchIdsByPuuid({ puuid });
+      },
     };
   },
   match: ({ matchId }: IGET_MATCH_BY_MATCH_ID_INPUT) => {

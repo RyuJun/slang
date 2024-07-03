@@ -1,15 +1,15 @@
 'use client';
-import { useMatchByMatchId } from '@/_service/match/useMatchService';
+import { useMatchesByMatchId } from '@/_service/match/useMatchService';
 import React, { Fragment } from 'react';
 import { Accordion, AccordionItem, Avatar, Card, CardBody, Chip, User } from '@nextui-org/react';
 import { IGET_MATCH_BY_MATCH_ID_OUTPUT } from '@/_model/matches';
-import { IMatchListsProps, EMatchTeamId } from './MachLists.type';
+import { IMatchListsProps, EMatchTeamId } from './MatchLists.type';
 import { itemSlot } from './MatchLists.constant';
 import { useParams } from 'next/navigation';
 import MatchListItemSkeleton from '../../Skeletons/MatchListItemSkeleton';
 
 export const MatchLists = ({ matchIds }: IMatchListsProps): React.ReactElement => {
-  const matches = matchIds.map((matchId) => useMatchByMatchId({ matchId }));
+  const matches = useMatchesByMatchId({ matchIds });
   const { puuid } = useParams();
 
   return (
