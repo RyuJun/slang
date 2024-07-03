@@ -11,6 +11,7 @@ interface HTTPInstance {
 export enum E_ApiType {
   RIOT = 'riot',
   LOL = 'lol',
+  LOLKR = 'lol-kr',
   CDN = 'cdn',
 }
 
@@ -21,6 +22,8 @@ const getApiBaseUrl = (apiType: E_ApiType, isClient = false): string => {
         return `/${E_ApiType.RIOT}`;
       case E_ApiType.LOL:
         return `/${E_ApiType.LOL}`;
+      case E_ApiType.LOLKR:
+        return `/${E_ApiType.LOLKR}`;
       case E_ApiType.CDN:
         return `/${E_ApiType.CDN}`;
     }
@@ -30,6 +33,8 @@ const getApiBaseUrl = (apiType: E_ApiType, isClient = false): string => {
       return `${process.env.NEXT_PUBLIC_RIOT_BASE_URL}`;
     case E_ApiType.LOL:
       return `${process.env.NEXT_PUBLIC_LOL_BASE_URL}`;
+    case E_ApiType.LOLKR:
+      return `${process.env.NEXT_PUBLIC_LOL_KR_BASE_URL}`;
     case E_ApiType.CDN:
       return `${process.env.NEXT_PUBLIC_CDN_BASE_URL}`;
     default:

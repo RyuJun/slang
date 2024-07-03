@@ -9,8 +9,11 @@ import { useSummonerByPuuid, useSummonerByRiotId } from '@/_service/summoner/use
 import { LocalStorage } from '@/_config/storage';
 import { IGET_SUMMONER_BY_RIOT_ID_OUTPUT } from '@/_model/summoner';
 import { uniqBy } from 'lodash';
+import { usePathname, useRouter } from 'next/navigation';
 
 const InputSearch = (): React.ReactElement => {
+  const router = useRouter();
+  const pathname = usePathname();
   const { summoner, setSummoner } = useSummonerStore((state) => ({
     summoner: state.summoner,
     setSummoner: state.setSummoner,
@@ -75,6 +78,9 @@ const InputSearch = (): React.ReactElement => {
         description={'소환사 이름 + #테그라인으로 검색해주세요. ex) 류뚝딱#KR1'}
         errorMessage={errorMessage}
         onChange={(e) => handleOnSearch(e.target.value)}
+        onFocus={() => {
+          pathname.includes('detail') && router.push(`/`);
+        }}
       />
     </div>
   );

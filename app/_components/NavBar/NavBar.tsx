@@ -1,7 +1,11 @@
-import { Navbar, NavbarContent, NavbarItem } from '@nextui-org/react';
+import { Navbar, NavbarContent, NavbarItem, User } from '@nextui-org/react';
 import InputSearch from '../InputSearch/InputSearch';
 import { fontRussoOne } from '@/_config/fonts';
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
+import { LocalStorage } from '@/_config/storage';
+import { ISummoner } from '@/_stores/useSummonerStore';
+import { useEffect, useState } from 'react';
 
 const NavBar = (): React.ReactElement => {
   return (

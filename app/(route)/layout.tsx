@@ -7,6 +7,7 @@ import NavBar from '@/_components/NavBar/NavBar';
 import '@/_styles/globals.css';
 import { fontRoboto } from '@/_config/fonts';
 import { siteConfig } from '@/_config/site';
+import UserSearchList from './_components/UserSearchList';
 
 export const metadata: Metadata = {
   title: {
@@ -21,12 +22,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`w-screen h-screen flex items-center justify-center ${fontRoboto.className}`}>
-        <Providers>
-          <NavBar />
-          {children}
-        </Providers>
+    <html lang="ko" className="dark">
+      <body className={`${fontRoboto.className}`}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

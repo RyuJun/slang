@@ -1,26 +1,16 @@
-import UserInfo from '@/_components/UserInfo/UserInfo';
-import queryOptions from '@/_service/summoner/queries';
-import { RequestOptions } from 'https';
-import React, { Suspense, useEffect } from 'react';
-import { Hydrate, getDehydratedQuery } from '@/_utils/react-query';
-import { User } from '@nextui-org/react';
-import AvartaServer from '../_components/server/AvartaServer';
+import React, { Suspense } from 'react';
+import {} from 'next';
+import NavBar from '@/_components/NavBar/NavBar';
+import MatchLists from '../_components/server/MatchLists/MatchLists';
+import MatchListSkeleton from '../_components/Skeletons/MatchListSkeleton';
 
-export default function Page() {
-  return <AvartaServer />;
-}
-
-/*  <div className="p-8 flex">
-<Suspense fallback={<div>Loading...</div>}>
-        <UserInfo
-          data={fetch(
-            `https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${gameName}/${tagLine}`,
-            {
-              headers: {
-                "X-Riot-Token": process.env.RIOT_API_KEY,
-              },
-            } as ExtendsRequestOptions
-          )}
-        />
+export default async function Page({ params }: any) {
+  return (
+    <div className="flex flex-col justify-center items-center">
+      <NavBar />
+      <Suspense fallback={<MatchListSkeleton />}>
+        <MatchLists puuid={params.puuid} />
       </Suspense>
-</div> */
+    </div>
+  );
+}
