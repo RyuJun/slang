@@ -4,7 +4,7 @@ import React from 'react';
 
 const MatchListSkeleton = (): React.ReactElement => {
   return (
-    <div className="w-full flex flex-col gap-3 p-5">
+    <div className="w-full flex flex-col gap-3 p-5 max-w-[1024px]">
       <Skeleton className="h-10 w-5/5 rounded-lg" />
       <Skeleton className="h-10 w-5/5 rounded-lg" />
       <Skeleton className="h-10 w-5/5 rounded-lg" />

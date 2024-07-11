@@ -16,9 +16,7 @@ interface DehydratedQueryExtended<TData = unknown, TError = unknown> {
 
 export async function getDehydratedQuery<Q extends QueryProps>({ queryKey, queryFn }: Q) {
   const queryClient = getQueryClient();
-
   await queryClient.prefetchQuery({ queryKey, queryFn });
-
   const queries = dehydrate(queryClient);
   return queries;
 

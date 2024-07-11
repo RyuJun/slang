@@ -24,10 +24,10 @@ const UserSearchList = (): React.ReactElement => {
     setLocalStorageItem('summoners', JSON.stringify(copySummuners));
     setForceUpdate(!forceUpdate);
   };
-  const handleOnMoveDetail = (puuid: string) => {
-    if (!puuid) return;
+  const handleOnMoveDetail = (puuid: string, id: string) => {
+    if (!puuid || !id) return;
     setSummoner(summonersStorageData.find((summoner: ISummoner) => summoner.puuid === puuid));
-    router.push(`/detail/${puuid}`);
+    router.push(`/detail/${puuid}/${id}`);
   };
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const UserSearchList = (): React.ReactElement => {
         <ListboxItem
           key="fetchSummoner"
           className="text-secondary"
-          onClick={() => handleOnMoveDetail(summoner?.puuid)}
+          onClick={() => handleOnMoveDetail(summoner?.puuid, summoner?.id)}
           startContent={
             <Fragment>
               {(summoner.searchStatus === ESearchStatus.IDLE || summoner.searchStatus === ESearchStatus.ERROR) && (
@@ -105,7 +105,7 @@ const UserSearchList = (): React.ReactElement => {
                 }}
               />
             }
-            onClick={() => handleOnMoveDetail(summoner.puuid)}
+            onClick={() => handleOnMoveDetail(summoner.puuid, summoner.id)}
           />
         ))}
       </Listbox>
